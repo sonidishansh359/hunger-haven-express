@@ -63,19 +63,23 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" className="hidden lg:flex">
-              <User className="w-5 h-5" />
-            </Button>
+            <Link to="/auth">
+              <Button variant="ghost" size="icon" className="hidden lg:flex">
+                <User className="w-5 h-5" />
+              </Button>
+            </Link>
 
-            <Button variant="default" size="sm" className="relative">
-              <ShoppingCart className="w-4 h-4" />
-              <span className="hidden sm:inline">Cart</span>
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
+            <Link to="/cart">
+              <Button variant="default" size="sm" className="relative">
+                <ShoppingCart className="w-4 h-4" />
+                <span className="hidden sm:inline">Cart</span>
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
+              </Button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <Button
@@ -127,10 +131,12 @@ const Navbar = () => {
                   </Link>
                 ))}
 
-                <Button variant="outline" className="w-full justify-start gap-2">
-                  <User className="w-4 h-4" />
-                  Sign In
-                </Button>
+                <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="outline" className="w-full justify-start gap-2">
+                    <User className="w-4 h-4" />
+                    Sign In
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           )}
