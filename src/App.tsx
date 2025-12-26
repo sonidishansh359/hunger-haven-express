@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { OwnerDataProvider } from "@/contexts/OwnerDataContext";
+import { DeliveryDataProvider } from "@/contexts/DeliveryDataContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Restaurants from "./pages/Restaurants";
@@ -19,6 +20,11 @@ import OwnerRestaurant from "./pages/owner/Restaurant";
 import OwnerMenu from "./pages/owner/Menu";
 import OwnerOrders from "./pages/owner/Orders";
 import OwnerEarnings from "./pages/owner/Earnings";
+import DeliveryDashboard from "./pages/delivery/Dashboard";
+import DeliveryOrders from "./pages/delivery/Orders";
+import DeliveryTracking from "./pages/delivery/Tracking";
+import DeliveryEarnings from "./pages/delivery/Earnings";
+import DeliveryProfile from "./pages/delivery/Profile";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +41,21 @@ const OwnerRoute = ({ children }: { children: React.ReactNode }) => {
   }
   
   return <OwnerDataProvider>{children}</OwnerDataProvider>;
+};
+
+// Protected route wrapper for delivery pages
+const DeliveryRoute = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated, user, isLoading } = useAuth();
+  
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+  
+  if (!isAuthenticated || user?.role !== 'delivery') {
+    return <Navigate to="/login" replace />;
+  }
+  
+  return <DeliveryDataProvider>{children}</DeliveryDataProvider>;
 };
 
 const AppRoutes = () => (
@@ -54,9 +75,15 @@ const AppRoutes = () => (
     <Route path="/owner/orders" element={<OwnerRoute><OwnerOrders /></OwnerRoute>} />
     <Route path="/owner/earnings" element={<OwnerRoute><OwnerEarnings /></OwnerRoute>} />
     
-    {/* Placeholder routes for other roles */}
+    {/* Delivery Dashboard Routes */}
+    <Route path="/delivery/dashboard" element={<DeliveryRoute><DeliveryDashboard /></DeliveryRoute>} />
+    <Route path="/delivery/orders" element={<DeliveryRoute><DeliveryOrders /></DeliveryRoute>} />
+    <Route path="/delivery/tracking" element={<DeliveryRoute><DeliveryTracking /></DeliveryRoute>} />
+    <Route path="/delivery/earnings" element={<DeliveryRoute><DeliveryEarnings /></DeliveryRoute>} />
+    <Route path="/delivery/profile" element={<DeliveryRoute><DeliveryProfile /></DeliveryRoute>} />
+    
+    {/* Placeholder route for user dashboard */}
     <Route path="/user/dashboard" element={<div className="min-h-screen flex items-center justify-center">User Dashboard - Coming Soon</div>} />
-    <Route path="/delivery/dashboard" element={<div className="min-h-screen flex items-center justify-center">Delivery Dashboard - Coming Soon</div>} />
     
     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
     <Route path="*" element={<NotFound />} />

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { User, Store, Bike } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { RoleCard } from '@/components/auth/RoleCard';
-import { LoginForm } from '@/components/auth/LoginForm';
+import { AuthForm } from '@/components/auth/AuthForm';
 import { UserRole } from '@/types/auth';
 
 const roles = [
@@ -32,23 +32,23 @@ const roles = [
 
 export default function Landing() {
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
-  const [showLogin, setShowLogin] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
 
   const handleRoleSelect = (role: UserRole) => {
     setSelectedRole(role);
-    setTimeout(() => setShowLogin(true), 200);
+    setTimeout(() => setShowAuth(true), 200);
   };
 
   const handleBack = () => {
-    setShowLogin(false);
+    setShowAuth(false);
     setTimeout(() => setSelectedRole(null), 200);
   };
 
   return (
     <>
       <Helmet>
-        <title>FoodSwift - Fast Food Delivery</title>
-        <meta name="description" content="Order food, manage your restaurant, or deliver happiness. Join FoodSwift today." />
+        <title>FoodSwift - Fast Food Delivery | Login & Signup</title>
+        <meta name="description" content="Order food, manage your restaurant, or deliver happiness. Join FoodSwift today - Login or create your account." />
       </Helmet>
 
       <div className="min-h-screen bg-background flex">
@@ -102,7 +102,7 @@ export default function Landing() {
         {/* Right Panel - Auth */}
         <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
           <AnimatePresence mode="wait">
-            {!showLogin ? (
+            {!showAuth ? (
               <motion.div
                 key="role-selection"
                 initial={{ opacity: 0 }}
@@ -146,8 +146,8 @@ export default function Landing() {
                 </div>
               </motion.div>
             ) : (
-              <LoginForm
-                key="login-form"
+              <AuthForm
+                key="auth-form"
                 role={selectedRole!}
                 onBack={handleBack}
               />
