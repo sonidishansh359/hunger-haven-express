@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { OwnerDataProvider } from "@/contexts/OwnerDataContext";
 import { DeliveryDataProvider } from "@/contexts/DeliveryDataContext";
+import { UserDataProvider } from "@/contexts/UserDataContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Restaurants from "./pages/Restaurants";
@@ -25,6 +26,13 @@ import DeliveryOrders from "./pages/delivery/Orders";
 import DeliveryTracking from "./pages/delivery/Tracking";
 import DeliveryEarnings from "./pages/delivery/Earnings";
 import DeliveryProfile from "./pages/delivery/Profile";
+import UserLayout from "./components/user/UserLayout";
+import UserDashboard from "./pages/user/Dashboard";
+import RestaurantDetail from "./pages/user/RestaurantDetail";
+import UserCart from "./pages/user/UserCart";
+import CheckoutSuccess from "./pages/user/CheckoutSuccess";
+import OrderTracking from "./pages/user/OrderTracking";
+import OrderHistory from "./pages/user/OrderHistory";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +66,21 @@ const DeliveryRoute = ({ children }: { children: React.ReactNode }) => {
   return <DeliveryDataProvider>{children}</DeliveryDataProvider>;
 };
 
+// Protected route wrapper for user pages
+const UserRoute = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated, user, isLoading } = useAuth();
+  
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+  
+  if (!isAuthenticated || user?.role !== 'user') {
+    return <Navigate to="/login" replace />;
+  }
+  
+  return <UserDataProvider>{children}</UserDataProvider>;
+};
+
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Index />} />
@@ -82,8 +105,17 @@ const AppRoutes = () => (
     <Route path="/delivery/earnings" element={<DeliveryRoute><DeliveryEarnings /></DeliveryRoute>} />
     <Route path="/delivery/profile" element={<DeliveryRoute><DeliveryProfile /></DeliveryRoute>} />
     
-    {/* Placeholder route for user dashboard */}
-    <Route path="/user/dashboard" element={<div className="min-h-screen flex items-center justify-center">User Dashboard - Coming Soon</div>} />
+    {/* User Dashboard Routes */}
+    <Route path="/user" element={<UserRoute><UserLayout /></UserRoute>}>
+      <Route path="dashboard" element={<UserDashboard />} />
+      <Route path="restaurants" element={<UserDashboard />} />
+      <Route path="restaurant/:id" element={<RestaurantDetail />} />
+      <Route path="cart" element={<UserCart />} />
+      <Route path="checkout-success" element={<CheckoutSuccess />} />
+      <Route path="tracking" element={<OrderTracking />} />
+      <Route path="orders" element={<OrderHistory />} />
+      <Route path="profile" element={<div className="p-8 text-center text-muted-foreground">Profile page</div>} />
+    </Route>
     
     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
     <Route path="*" element={<NotFound />} />
