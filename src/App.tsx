@@ -83,8 +83,8 @@ const UserRoute = ({ children }: { children: React.ReactNode }) => {
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={<Index />} />
-    <Route path="/login" element={<Landing />} />
+   
+    <Route path="/" element={<Landing />} />
     <Route path="/restaurants" element={<Restaurants />} />
     <Route path="/offers" element={<Offers />} />
     <Route path="/help" element={<Help />} />
