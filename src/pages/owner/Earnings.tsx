@@ -83,8 +83,8 @@ const exportToCSV = (data: typeof enhancedEarningsData, period: Period) => {
 const exportToPDF = async (data: typeof enhancedEarningsData, period: Period) => {
   try {
     // Dynamic import for client-side only
-              //const { jsPDF } = await import('jspdf');
-               //await import('jspdf-autotable');
+              const { jsPDF } = await import('jspdf');
+               await import('jspdf-autotable');
     
     const doc = new jsPDF();
     
