@@ -57,7 +57,7 @@ export default function DeliveryEarnings() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm opacity-80">Today</p>
-                    <p className="text-3xl font-bold mt-1">${earnings.today.toFixed(2)}</p>
+                    <p className="text-3xl font-bold mt-1">₹{earnings.today.toFixed(2)}</p>
                     <p className="text-sm opacity-80 mt-1">{earnings.todayOrders} deliveries</p>
                   </div>
                   <div className="p-3 rounded-xl bg-white/20">
@@ -78,7 +78,7 @@ export default function DeliveryEarnings() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-muted-foreground">This Week</p>
-                    <p className="text-2xl font-bold mt-1">${earnings.thisWeek.toFixed(2)}</p>
+                    <p className="text-2xl font-bold mt-1">₹{earnings.thisWeek.toFixed(2)}</p>
                     <p className="text-sm text-muted-foreground mt-1">{earnings.weeklyOrders} deliveries</p>
                   </div>
                   <div className="p-3 rounded-xl bg-blue-500/10">
@@ -99,7 +99,7 @@ export default function DeliveryEarnings() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-muted-foreground">This Month</p>
-                    <p className="text-2xl font-bold mt-1">${earnings.thisMonth.toFixed(2)}</p>
+                    <p className="text-2xl font-bold mt-1">₹{earnings.thisMonth.toFixed(2)}</p>
                     <p className="text-sm text-muted-foreground mt-1">{earnings.monthlyOrders} deliveries</p>
                   </div>
                   <div className="p-3 rounded-xl bg-purple-500/10">
@@ -120,7 +120,7 @@ export default function DeliveryEarnings() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-muted-foreground">Pending</p>
-                    <p className="text-2xl font-bold mt-1">${earnings.pending.toFixed(2)}</p>
+                    <p className="text-2xl font-bold mt-1">₹{earnings.pending.toFixed(2)}</p>
                     <p className="text-sm text-muted-foreground mt-1">Next payout: Monday</p>
                   </div>
                   <div className="p-3 rounded-xl bg-orange-500/10">
@@ -144,7 +144,7 @@ export default function DeliveryEarnings() {
                   <motion.div
                     key={day.day}
                     initial={{ height: 0 }}
-                    animate={{ height: `${(day.amount / maxEarning) * 100}%` }}
+                    animate={{ height: `₹{(day.amount / maxEarning) * 100}%` }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
                     className="flex-1 flex flex-col items-center"
                   >
@@ -153,7 +153,7 @@ export default function DeliveryEarnings() {
                       style={{ height: '100%', minHeight: '20px' }}
                     >
                       <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-foreground text-background px-2 py-1 rounded text-xs whitespace-nowrap">
-                        ${day.amount.toFixed(2)}
+                        ₹{day.amount.toFixed(2)}
                       </div>
                     </div>
                     <div className="mt-2 text-center">
@@ -209,7 +209,7 @@ export default function DeliveryEarnings() {
                   </div>
                 </div>
                 <p className="text-xl font-bold">
-                  ${(earnings.thisWeek / earnings.weeklyOrders).toFixed(2)}
+                  ₹{(earnings.thisWeek / earnings.weeklyOrders).toFixed(2)}
                 </p>
               </div>
             </CardContent>
@@ -260,7 +260,7 @@ export default function DeliveryEarnings() {
                       "font-bold",
                       transaction.amount < 0 ? "text-red-500" : "text-green-500"
                     )}>
-                      {transaction.amount < 0 ? '-' : '+'}${Math.abs(transaction.amount).toFixed(2)}
+                      {transaction.amount < 0 ? '-' : '+'}₹{Math.abs(transaction.amount).toFixed(2)}
                     </p>
                     <Badge variant="outline" className="text-xs">
                       {transaction.type}

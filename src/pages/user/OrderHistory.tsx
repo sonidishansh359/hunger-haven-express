@@ -34,7 +34,7 @@ export default function OrderHistory() {
                     <div>
                       <h3 className="font-semibold text-foreground">{order.restaurantName}</h3>
                       <p className="text-sm text-muted-foreground">
-                        {order.items.length} items • ${order.totalAmount.toFixed(2)}
+                        {order.items.length} items • ₹{order.totalAmount.toFixed(2)}
                       </p>
                     </div>
                     <span className={`px-2 py-1 text-xs font-medium rounded-full ${

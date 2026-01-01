@@ -783,7 +783,7 @@ export default function RestaurantPage() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="minOrder" className="text-sm font-medium">Minimum Order Amount ($)</Label>
+                    <Label htmlFor="minOrder" className="text-sm font-medium">Minimum Order Amount (₹)</Label>
                     <Input
                       id="minOrder"
                       type="number"
@@ -796,7 +796,7 @@ export default function RestaurantPage() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="deliveryFee" className="text-sm font-medium">Delivery Fee ($)</Label>
+                    <Label htmlFor="deliveryFee" className="text-sm font-medium">Delivery Fee (₹)</Label>
                     <Input
                       id="deliveryFee"
                       type="number"

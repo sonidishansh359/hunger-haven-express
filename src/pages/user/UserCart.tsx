@@ -498,7 +498,7 @@ export default function UserCart() {
                     />
                     <div className="flex-1">
                       <h3 className="font-medium text-foreground">{item.name}</h3>
-                      <p className="text-sm text-muted-foreground">${item.price.toFixed(2)} each</p>
+                      <p className="text-sm text-muted-foreground">₹{item.price.toFixed(2)} each</p>
                     </div>
                     <div className="flex flex-col items-end justify-between">
                       <button
@@ -643,29 +643,29 @@ export default function UserCart() {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal ({cart.reduce((sum, item) => sum + item.quantity, 0)} items)</span>
-                  <span className="text-foreground">${subtotal.toFixed(2)}</span>
+                  <span className="text-foreground">₹{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Delivery Fee</span>
                   <span className={deliveryFee === 0 ? 'text-green-600 dark:text-green-500' : 'text-foreground'}>
-                    {deliveryFee === 0 ? 'FREE' : `$${deliveryFee.toFixed(2)}`}
+                    {deliveryFee === 0 ? 'FREE' : `₹${deliveryFee.toFixed(2)}`}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Tax (8%)</span>
-                  <span className="text-foreground">${tax.toFixed(2)}</span>
+                  <span className="text-foreground">₹{tax.toFixed(2)}</span>
                 </div>
                 <div className="h-px bg-border my-4" />
                 <div className="flex justify-between text-base font-semibold">
                   <span className="text-foreground">Total</span>
-                  <span className="text-foreground">${total.toFixed(2)}</span>
+                  <span className="text-foreground">₹{total.toFixed(2)}</span>
                 </div>
               </div>
 
               {subtotal < 25 && (
                 <div className="mt-4 p-3 bg-secondary rounded-lg">
                   <p className="text-xs text-muted-foreground">
-                    Add <span className="font-bold text-primary">${(25 - subtotal).toFixed(2)}</span> more for free delivery
+                    Add <span className="font-bold text-primary">₹{(25 - subtotal).toFixed(2)}</span> more for free delivery
                   </p>
                 </div>
               )}
@@ -682,7 +682,7 @@ export default function UserCart() {
                     Processing...
                   </span>
                 ) : (
-                  `Place Order • $${total.toFixed(2)}`
+                  `Place Order • ₹${total.toFixed(2)}`
                 )}
               </Button>
 

@@ -172,7 +172,7 @@ export default function RestaurantDetail() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between mt-3">
-                  <span className="text-lg font-bold text-foreground">${item.price.toFixed(2)}</span>
+                  <span className="text-lg font-bold text-foreground">₹{item.price.toFixed(2)}</span>
                   {item.isAvailable ? (
                     getCartQuantity(item.id) > 0 ? (
                       <div className="flex items-center gap-2">
@@ -231,7 +231,7 @@ export default function RestaurantDetail() {
               <ShoppingCart className="w-5 h-5" />
               <span>{cartCount} items</span>
             </div>
-            <span className="ml-auto font-bold">${cartTotal.toFixed(2)}</span>
+            <span className="ml-auto font-bold">₹{cartTotal.toFixed(2)}</span>
           </Button>
         </motion.div>
       )}

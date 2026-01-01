@@ -269,7 +269,7 @@ export default function MenuPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-purple-600 dark:text-purple-400">Average Price</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">${stats.avgPrice.toFixed(2)}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">₹{stats.avgPrice.toFixed(2)}</p>
               </div>
               <div className="p-3 bg-purple-500/10 rounded-xl">
                 <DollarSign className="h-6 w-6 text-purple-600 dark:text-purple-400" />
@@ -435,9 +435,8 @@ export default function MenuPage() {
                     <div className="absolute top-4 right-4">
                       <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg">
                         <span className="text-lg font-bold text-gray-900 dark:text-white">
-                          ${item.price.toFixed(2)}
-                        </span>
-                      </div>
+                                                        ₹{item.price.toFixed(2)}
+                                                      </span>                      </div>
                     </div>
                     
                     {/* Category */}
@@ -563,7 +562,7 @@ export default function MenuPage() {
                             <div className="flex items-center gap-2 mt-1">
                               <Badge variant="outline" size="sm">{item.category}</Badge>
                               <span className="text-sm text-gray-500">
-                                ${item.price.toFixed(2)}
+                                ₹{item.price.toFixed(2)}
                               </span>
                             </div>
                             <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1 mt-2">
@@ -700,9 +699,9 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="itemPrice" className="text-sm font-medium">Price ($) *</Label>
+                    <Label htmlFor="itemPrice" className="text-sm font-medium">Price (₹) *</Label>
                     <div className="relative">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">₹</span>
                       <Input
                         id="itemPrice"
                         type="number"

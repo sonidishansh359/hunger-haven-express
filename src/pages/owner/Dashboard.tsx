@@ -239,7 +239,7 @@ export default function OwnerDashboard() {
           >
             <StatCard
               title="Today's Revenue"
-              value={`$${stats.revenue.toFixed(2)}`}
+              value={`₹${stats.revenue.toFixed(2)}`}
               icon={DollarSign}
               trend={{ value: 8, isPositive: true }}
               gradient="from-emerald-500/10 to-emerald-500/5"
@@ -344,7 +344,7 @@ export default function OwnerDashboard() {
                       </div>
                       <div className="text-right">
                         <p className="font-bold text-lg bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                          ${order.totalAmount.toFixed(2)}
+                          ₹{order.totalAmount.toFixed(2)}
                         </p>
                         <Badge
                           className={cn(

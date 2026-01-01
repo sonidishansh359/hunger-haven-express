@@ -68,12 +68,12 @@ export default function DeliveryOrders() {
                     {activeOrder.items.map((item, index) => (
                       <div key={index} className="flex justify-between text-sm">
                         <span>{item.quantity}x {item.name}</span>
-                        <span className="text-muted-foreground">${(item.price * item.quantity).toFixed(2)}</span>
+                        <span className="text-muted-foreground">₹{(item.price * item.quantity).toFixed(2)}</span>
                       </div>
                     ))}
                     <div className="flex justify-between font-medium pt-2 border-t border-border">
                       <span>Total</span>
-                      <span>${activeOrder.totalAmount.toFixed(2)}</span>
+                      <span>₹{activeOrder.totalAmount.toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
@@ -84,9 +84,8 @@ export default function DeliveryOrders() {
                     <span className="text-sm text-muted-foreground">{activeOrder.distance}</span>
                   </div>
                   <p className="text-lg font-bold text-green-500">
-                    Earn ${activeOrder.estimatedEarning.toFixed(2)}
-                  </p>
-                </div>
+                                                  Earn ₹{activeOrder.estimatedEarning.toFixed(2)}
+                                                </p>                </div>
               </div>
             </CardContent>
           </Card>
@@ -154,13 +153,12 @@ export default function DeliveryOrders() {
                               {order.items.length} items
                             </span>
                             <span className="text-sm font-medium">
-                              ${order.totalAmount.toFixed(2)}
-                            </span>
-                          </div>
+                                                            ₹{order.totalAmount.toFixed(2)}
+                                                          </span>                          </div>
                           <div className="flex items-center gap-3">
-                            <span className="text-lg font-bold text-green-500">
-                              +${order.estimatedEarning.toFixed(2)}
-                            </span>
+                            <p className="text-lg font-bold text-green-500">
+                                +₹{order.estimatedEarning.toFixed(2)}
+                              </p>
                             <Button
                               size="sm"
                               onClick={() => acceptOrder(order.id)}

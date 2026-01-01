@@ -48,7 +48,7 @@ const enhancedEarningsData = mockEarningsData.map(day => ({
 
 // Function to export as CSV
 const exportToCSV = (data: typeof enhancedEarningsData, period: Period) => {
-  const headers = ['Date', 'Revenue ($)', 'Orders', 'Profit ($)', 'Avg Order Value ($)', 'Growth (%)', 'Peak Hour'];
+  const headers = ['Date', 'Revenue (₹)', 'Orders', 'Profit (₹)', 'Avg Order Value (₹)', 'Growth (%)', 'Peak Hour'];
   
   const csvContent = [
     headers.join(','),
@@ -113,10 +113,10 @@ const exportToPDF = async (data: typeof enhancedEarningsData, period: Period) =>
     
     doc.setFontSize(10);
     const summaryData = [
-      ['Total Revenue', `$${totalRevenue.toFixed(2)}`],
+      ['Total Revenue', `₹${totalRevenue.toFixed(2)}`],
       ['Total Orders', totalOrders.toString()],
-      ['Total Profit', `$${totalProfit.toFixed(2)}`],
-      ['Avg Order Value', `$${avgOrderValue.toFixed(2)}`],
+      ['Total Profit', `₹${totalProfit.toFixed(2)}`],
+      ['Avg Order Value', `₹${avgOrderValue.toFixed(2)}`],
       ['Period', period.charAt(0).toUpperCase() + period.slice(1)]
     ];
     
@@ -139,10 +139,10 @@ const exportToPDF = async (data: typeof enhancedEarningsData, period: Period) =>
         month: 'short', 
         day: 'numeric' 
       }),
-      `$${day.revenue.toFixed(2)}`,
+      `₹${day.revenue.toFixed(2)}`,
       day.orders.toString(),
-      `$${day.profit.toFixed(2)}`,
-      `$${(day.revenue / day.orders).toFixed(2)}`,
+      `₹${day.profit.toFixed(2)}`,
+      `₹${(day.revenue / day.orders).toFixed(2)}`,
       `${day.growth > 0 ? '+' : ''}${day.growth.toFixed(2)}%`,
       `${day.peakHour}:00`
     ]);
@@ -387,7 +387,7 @@ export default function EarningsPage() {
           <Eye className="w-4 h-4 text-gray-500" />
           <span className="text-sm font-medium text-gray-700">Show:</span>
           <div className="flex bg-gray-100 rounded-lg p-1">
-            {[
+            {[ 
               { key: 'revenue', label: 'Revenue', icon: DollarSign },
               { key: 'orders', label: 'Orders', icon: ShoppingBag },
               { key: 'profit', label: 'Profit', icon: TrendingUp },
@@ -434,7 +434,7 @@ export default function EarningsPage() {
                 </Badge>
               </div>
               <h3 className="text-sm font-medium text-gray-500 mb-1">Total Revenue</h3>
-              <p className="text-2xl font-bold text-gray-900">${totalRevenue.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-gray-900">₹{totalRevenue.toFixed(2)}</p>
               <p className="text-xs text-gray-500 mt-2">
                 {revenueGrowth >= 0 ? 'Increased' : 'Decreased'} from last period
               </p>
@@ -463,7 +463,7 @@ export default function EarningsPage() {
               <h3 className="text-sm font-medium text-gray-500 mb-1">Total Orders</h3>
               <p className="text-2xl font-bold text-gray-900">{totalOrders.toLocaleString()}</p>
               <p className="text-xs text-gray-500 mt-2">
-                Avg ${avgOrderValue.toFixed(2)} per order
+                Avg ₹{avgOrderValue.toFixed(2)} per order
               </p>
             </div>
           </div>
@@ -488,7 +488,7 @@ export default function EarningsPage() {
                 </Badge>
               </div>
               <h3 className="text-sm font-medium text-gray-500 mb-1">Total Profit</h3>
-              <p className="text-2xl font-bold text-gray-900">${totalProfit.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-gray-900">₹{totalProfit.toFixed(2)}</p>
               <div className="mt-2">
                 <div className="flex justify-between text-xs text-gray-500 mb-1">
                   <span>Margin</span>
@@ -519,7 +519,7 @@ export default function EarningsPage() {
                 </Badge>
               </div>
               <h3 className="text-sm font-medium text-gray-500 mb-1">Peak Performance</h3>
-              <p className="text-2xl font-bold text-gray-900">${bestDay.revenue.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-gray-900">₹{bestDay.revenue.toFixed(2)}</p>
               <p className="text-xs text-gray-500 mt-2">
                 {new Date(bestDay.date).toLocaleDateString('en-US', { weekday: 'long' })}
               </p>
@@ -572,8 +572,8 @@ export default function EarningsPage() {
                       key={day.date}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: `${height}%`, opacity: 1 }}
-                      transition={{ 
-                        delay: 0.6 + index * 0.05, 
+                      transition={{
+                        delay: 0.6 + index * 0.05,
                         duration: 0.5,
                         type: "spring",
                         stiffness: 100
@@ -592,7 +592,7 @@ export default function EarningsPage() {
                       >
                         <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-2 py-1.5 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap z-10 shadow-lg">
                           <div className="flex items-center gap-2">
-                            {viewType === 'revenue' || viewType === 'profit' ? '$' : ''}
+                            {viewType === 'revenue' || viewType === 'profit' ? '₹' : ''}
                             {value.toLocaleString()}
                             {viewType === 'orders' ? ' orders' : ''}
                           </div>
@@ -614,11 +614,11 @@ export default function EarningsPage() {
               
               {/* Chart Legend */}
               <div className="flex items-center justify-center gap-6 mt-8 pt-6 border-t border-gray-200">
-                {[
+                {[ 
                   { 
                     label: 'Revenue', 
                     color: 'bg-gradient-to-r from-emerald-500 to-emerald-400',
-                    value: `$${totalRevenue.toFixed(2)}`
+                    value: `₹${totalRevenue.toFixed(2)}`
                   },
                   { 
                     label: 'Orders', 
@@ -628,7 +628,7 @@ export default function EarningsPage() {
                   { 
                     label: 'Profit', 
                     color: 'bg-gradient-to-r from-purple-500 to-purple-400',
-                    value: `$${totalProfit.toFixed(2)}`
+                    value: `₹${totalProfit.toFixed(2)}`
                   },
                 ].map((item) => (
                   <button
@@ -722,7 +722,7 @@ export default function EarningsPage() {
                   <div className="text-right">
                     <div className="flex items-center justify-end gap-2 mb-1">
                       <p className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent">
-                        ${day.revenue.toFixed(2)}
+                        ₹{day.revenue.toFixed(2)}
                       </p>
                       {day.growth !== 0 && (
                         <Badge 
@@ -734,7 +734,7 @@ export default function EarningsPage() {
                       )}
                     </div>
                     <p className="text-sm text-gray-600">
-                      Avg: ${(day.revenue / day.orders).toFixed(2)}
+                      Avg: ₹{(day.revenue / day.orders).toFixed(2)}
                     </p>
                   </div>
                 </motion.div>
@@ -860,7 +860,7 @@ export default function EarningsPage() {
               <div>
                 <div className="flex justify-between text-sm text-gray-600 mb-1">
                   <span>Monthly Goal</span>
-                  <span className="font-semibold text-emerald-600">${totalRevenue.toFixed(0)} / $10,000</span>
+                  <span className="font-semibold text-emerald-600">₹{totalRevenue.toFixed(0)} / ₹10,000</span>
                 </div>
                 <Progress value={(totalRevenue / 10000) * 100} className="h-2" />
               </div>

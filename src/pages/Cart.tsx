@@ -117,9 +117,8 @@ const Cart = () => {
                           {item.restaurant}
                         </p>
                         <p className="text-primary font-semibold mt-1">
-                          ${item.price.toFixed(2)}
-                        </p>
-                      </div>
+                                                        ₹{item.price.toFixed(2)}
+                                                      </p>                      </div>
                       <div className="flex flex-col items-end justify-between">
                         <button
                           onClick={() => removeItem(item.id)}
@@ -165,41 +164,36 @@ const Cart = () => {
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Subtotal</span>
                         <span className="text-foreground">
-                          ${subtotal.toFixed(2)}
-                        </span>
-                      </div>
+                                                        ₹{subtotal.toFixed(2)}
+                                                      </span>                      </div>
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">
                           Delivery Fee
                         </span>
                         <span className="text-foreground">
-                          {deliveryFee === 0 ? (
-                            <span className="text-success">Free</span>
-                          ) : (
-                            `$${deliveryFee.toFixed(2)}`
-                          )}
-                        </span>
-                      </div>
+                                                        {deliveryFee === 0 ? (
+                                                          <span className="text-success">Free</span>
+                                                        ) : (
+                                                          `₹${deliveryFee.toFixed(2)}`
+                                                        )}
+                                                      </span>                      </div>
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Tax</span>
                         <span className="text-foreground">
-                          ${tax.toFixed(2)}
-                        </span>
-                      </div>
+                                                        ₹{tax.toFixed(2)}
+                                                      </span>                      </div>
                       <div className="h-px bg-border my-4" />
                       <div className="flex justify-between text-base font-semibold">
                         <span className="text-foreground">Total</span>
                         <span className="text-foreground">
-                          ${total.toFixed(2)}
-                        </span>
-                      </div>
+                                                        ₹{total.toFixed(2)}
+                                                      </span>                      </div>
                     </div>
 
                     {subtotal < 25 && (
                       <p className="text-xs text-muted-foreground mt-4">
-                        Add ${(25 - subtotal).toFixed(2)} more for free delivery
-                      </p>
-                    )}
+                                                    Add ₹{(25 - subtotal).toFixed(2)} more for free delivery
+                                                  </p>                    )}
 
                     <Button className="w-full mt-6 gap-2" size="lg">
                       Proceed to Checkout

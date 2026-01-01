@@ -111,7 +111,7 @@ export default function DeliveryProfile() {
           <Card>
             <CardContent className="p-4 text-center">
               <p className="text-sm text-muted-foreground">Total Earnings</p>
-              <p className="text-2xl font-bold text-green-500">${earnings.thisMonth.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-green-500">₹{earnings.thisMonth.toFixed(2)}</p>
               <p className="text-xs text-muted-foreground">This month</p>
             </CardContent>
           </Card>

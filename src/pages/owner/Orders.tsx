@@ -299,8 +299,8 @@ export default function OrdersPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-emerald-600 dark:text-emerald-400">Total Revenue</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">${stats.revenue.toFixed(2)}</p>
-                <p className="text-xs text-emerald-500 mt-1">Today: ${stats.todayRevenue.toFixed(2)}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">₹{stats.revenue.toFixed(2)}</p>
+                <p className="text-xs text-emerald-500 mt-1">Today: ₹{stats.todayRevenue.toFixed(2)}</p>
               </div>
               <div className="p-3 bg-emerald-500/10 rounded-xl">
                 <DollarSign className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
@@ -521,7 +521,7 @@ export default function OrdersPage() {
                           <div className="flex items-center gap-6">
                             <div className="text-right">
                               <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                                ${order.totalAmount.toFixed(2)}
+                                ₹{order.totalAmount.toFixed(2)}
                               </p>
                               <p className="text-sm text-gray-500">Total Amount</p>
                             </div>
@@ -568,19 +568,17 @@ export default function OrdersPage() {
                                                 {item.name}
                                               </p>
                                               <p className="text-sm text-gray-500">
-                                                ${item.price.toFixed(2)} each
-                                              </p>
-                                            </div>
+                                                                              ₹{item.price.toFixed(2)} each
+                                                                            </p>                                            </div>
                                           </div>
                                           <p className="font-bold text-gray-900 dark:text-white">
-                                            ${(item.price * item.quantity).toFixed(2)}
-                                          </p>
-                                        </div>
+                                                                          ₹{(item.price * item.quantity).toFixed(2)}
+                                                                        </p>                                        </div>
                                       ))}
                                       <div className="pt-3 border-t border-gray-200 dark:border-gray-800">
                                         <div className="flex justify-between font-bold text-gray-900 dark:text-white">
                                           <span>Total</span>
-                                          <span>${order.totalAmount.toFixed(2)}</span>
+                                          <span>₹{order.totalAmount.toFixed(2)}</span>
                                         </div>
                                       </div>
                                     </div>

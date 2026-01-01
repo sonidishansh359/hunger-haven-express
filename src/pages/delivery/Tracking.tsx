@@ -225,9 +225,8 @@ export default function DeliveryTracking() {
                         Delivery Completed!
                       </p>
                       <p className="text-sm text-green-600 dark:text-green-400 mt-1">
-                        You earned ${activeOrder.estimatedEarning.toFixed(2)}
-                      </p>
-                    </div>
+                                                      You earned ₹{activeOrder.estimatedEarning.toFixed(2)}
+                                                    </p>                    </div>
                   )}
                 </CardContent>
               </Card>
@@ -266,17 +265,16 @@ export default function DeliveryTracking() {
                       <div key={index} className="flex justify-between text-sm">
                         <span>{item.quantity}x {item.name}</span>
                         <span className="text-muted-foreground">
-                          ${(item.price * item.quantity).toFixed(2)}
-                        </span>
-                      </div>
+                                                        ₹{(item.price * item.quantity).toFixed(2)}
+                                                      </span>                      </div>
                     ))}
                     <div className="flex justify-between font-medium pt-3 border-t border-border">
                       <span>Total</span>
-                      <span>${activeOrder.totalAmount.toFixed(2)}</span>
+                      <span>₹{activeOrder.totalAmount.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-green-500 font-medium">
                       <span>Your Earnings</span>
-                      <span>+${activeOrder.estimatedEarning.toFixed(2)}</span>
+                      <span>+₹{activeOrder.estimatedEarning.toFixed(2)}</span>
                     </div>
                   </div>
                 </CardContent>

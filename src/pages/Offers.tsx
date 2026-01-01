@@ -9,7 +9,7 @@ const offers = [
   {
     id: 1,
     title: "50% OFF Your First Order",
-    description: "New to FoodSwift? Get 50% off on your first order up to $20",
+    description: "New to FoodSwift? Get 50% off on your first order up to ₹20",
     code: "WELCOME50",
     validUntil: "Dec 31, 2024",
     icon: Gift,
@@ -18,7 +18,7 @@ const offers = [
   {
     id: 2,
     title: "Free Delivery Weekend",
-    description: "Enjoy free delivery on all orders above $15 this weekend",
+    description: "Enjoy free delivery on all orders above ₹15 this weekend",
     code: "FREEDEL",
     validUntil: "Every Weekend",
     icon: Truck,
@@ -62,7 +62,7 @@ const featuredDeals = [
   {
     id: 3,
     restaurant: "Tokyo Sushi House",
-    deal: "15% OFF on orders above $30",
+    deal: "15% OFF on orders above ₹30",
     image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&auto=format&fit=crop&q=80",
     validUntil: "Ongoing",
   },

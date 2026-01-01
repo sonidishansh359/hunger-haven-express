@@ -122,7 +122,7 @@ const initialNotifications = [
     id: 6,
     type: 'payment',
     title: 'Payment Successful',
-    message: 'Payment of $24.99 for order #ORD1234 has been processed.',
+    message: 'Payment of ₹24.99 for order #ORD1234 has been processed.',
     time: '2 days ago',
     icon: CreditCard,
     color: 'bg-green-100 text-green-600',
@@ -1764,7 +1764,7 @@ export default function UserDashboard() {
                             {restaurant.deliveryFee === 0 ? (
                               <span className="text-green-600">Free Delivery</span>
                             ) : (
-                              <span>Fee: <span className="text-[#FF7A00]">${restaurant.deliveryFee}</span></span>
+                              <span>Fee: <span className="text-[#FF7A00]">₹{restaurant.deliveryFee}</span></span>
                             )}
                           </div>
                         </div>
@@ -1887,7 +1887,7 @@ export default function UserDashboard() {
                             <div className="flex items-center gap-2">
                               <span className="text-gray-500">Delivery:</span>
                               <span className={`font-bold ${restaurant.deliveryFee === 0 ? 'text-green-600' : 'text-[#FF7A00]'}`}>
-                                {restaurant.deliveryFee === 0 ? 'Free' : `$${restaurant.deliveryFee}`}
+                                {restaurant.deliveryFee === 0 ? 'Free' : `₹${restaurant.deliveryFee}`}
                               </span>
                             </div>
                           </div>

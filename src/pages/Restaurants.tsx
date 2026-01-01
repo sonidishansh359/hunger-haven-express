@@ -29,7 +29,7 @@ const allRestaurants = [
     rating: 4.9,
     reviewCount: 189,
     deliveryTime: "25-35 min",
-    deliveryFee: "$2.99",
+    deliveryFee: "₹2.99",
     distance: "2.1 km",
   },
   {
@@ -52,7 +52,7 @@ const allRestaurants = [
     rating: 4.6,
     reviewCount: 156,
     deliveryTime: "30-40 min",
-    deliveryFee: "$1.99",
+    deliveryFee: "₹1.99",
     distance: "3.5 km",
     discount: "15% OFF",
   },
@@ -75,7 +75,7 @@ const allRestaurants = [
     rating: 4.7,
     reviewCount: 203,
     deliveryTime: "25-35 min",
-    deliveryFee: "$2.49",
+    deliveryFee: "₹2.49",
     distance: "2.4 km",
   },
   {
@@ -98,7 +98,7 @@ const allRestaurants = [
     rating: 4.6,
     reviewCount: 167,
     deliveryTime: "25-35 min",
-    deliveryFee: "$1.99",
+    deliveryFee: "₹1.99",
     distance: "2.9 km",
   },
   {
@@ -109,7 +109,7 @@ const allRestaurants = [
     rating: 4.8,
     reviewCount: 134,
     deliveryTime: "20-30 min",
-    deliveryFee: "$1.49",
+    deliveryFee: "₹1.49",
     distance: "1.6 km",
   },
   {
@@ -120,7 +120,7 @@ const allRestaurants = [
     rating: 4.7,
     reviewCount: 289,
     deliveryTime: "30-45 min",
-    deliveryFee: "$2.99",
+    deliveryFee: "₹2.99",
     distance: "3.2 km",
     discount: "10% OFF",
   },
@@ -144,7 +144,7 @@ const allRestaurants = [
     rating: 4.8,
     reviewCount: 356,
     deliveryTime: "20-30 min",
-    deliveryFee: "$1.99",
+    deliveryFee: "₹1.99",
     distance: "0.9 km",
   },
 ];
